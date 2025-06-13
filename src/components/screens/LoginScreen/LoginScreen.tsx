@@ -17,6 +17,7 @@ const LoginScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
+  const [touched, setTouched] = useState<Record<keyof Errors, boolean>>({ email: false, password: false });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -33,35 +34,47 @@ const LoginScreen: React.FC = () => {
   // Real-time validation with single useEffect
   useEffect(() => {
     const newErrors: Errors = {};
-    if (!email.trim()) {
-      newErrors.email = 'メールアドレスを入力してください';
-    } else if (!validateEmail(email)) {
-      newErrors.email = '有効なメールアドレスを入力してください';
+    if (touched.email) {
+      if (!email.trim()) {
+        newErrors.email = 'メールアドレスを入力してください';
+      } else if (!validateEmail(email)) {
+        newErrors.email = '有効なメールアドレスを入力してください';
+      }
     }
-    if (!password.trim()) {
-      newErrors.password = 'パスワードを入力してください';
-    } else if (!validatePassword(password)) {
-      newErrors.password = 'パスワードは6文字以上で入力してください';
+    if (touched.password) {
+      if (!password.trim()) {
+        newErrors.password = 'パスワードを入力してください';
+      } else if (!validatePassword(password)) {
+        newErrors.password = 'パスワードは6文字以上で入力してください';
+      }
     }
     setErrors(newErrors);
-  }, [email, password]);
+  }, [email, password, touched]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    if (!touched.email) {
+      setTouched(prev => ({ ...prev, email: true }));
+    }
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+    if (!touched.password) {
+      setTouched(prev => ({ ...prev, password: true }));
+    }
   };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setTouched({ email: true, password: true });
     if (Object.keys(errors).length) return;
     setIsLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       setEmail('');
       setPassword('');
+      setTouched({ email: false, password: false });
       setErrors({});
       navigate('/register-safety-status');
     } catch (error) {
@@ -96,10 +109,11 @@ const LoginScreen: React.FC = () => {
                 required
                 disabled={isLoading}
                 autoFocus
+                style={{ transition: 'border 0.2s, box-shadow 0.2s' }}
               />
             </div>
             {errors.email && (
-              <span className={styles.errorMessage} style={{ fontWeight: 600, color: '#EF4444', marginTop: 8, display: 'block', textAlign: 'center' }} role="alert">{errors.email}</span>
+              <span className={styles.errorMessage} style={{ fontWeight: 600, color: '#EF4444', marginTop: 8, display: 'block', textAlign: 'center', transition: 'color 0.2s' }} role="alert">{errors.email}</span>
             )}
           </div>
           {/* --- Password Input --- */}
@@ -118,6 +132,7 @@ const LoginScreen: React.FC = () => {
                 onChange={handlePasswordChange}
                 required
                 disabled={isLoading}
+                style={{ transition: 'border 0.2s, box-shadow 0.2s' }}
               />
               <button
                 type="button"
@@ -130,7 +145,7 @@ const LoginScreen: React.FC = () => {
               </button>
             </div>
             {errors.password && (
-              <span className={styles.errorMessage} style={{ fontWeight: 600, color: '#EF4444', marginTop: 8, display: 'block', textAlign: 'center' }} role="alert">{errors.password}</span>
+              <span className={styles.errorMessage} style={{ fontWeight: 600, color: '#EF4444', marginTop: 8, display: 'block', textAlign: 'center', transition: 'color 0.2s' }} role="alert">{errors.password}</span>
             )}
           </div>
           <Link to="/forgot-password" className={styles.forgotPassword}>
@@ -139,7 +154,7 @@ const LoginScreen: React.FC = () => {
           <button
             type="submit"
             className={`${styles.loginButton} ${isLoading ? styles.loginButtonLoading : ''}`}
-            style={{ marginTop: 16, width: '100%' }}
+            style={{ marginTop: 16, width: '100%', transition: 'background 0.2s' }}
             disabled={isLoading || Object.keys(errors).length > 0 || !email || !password}
           >
             {isLoading ? (
