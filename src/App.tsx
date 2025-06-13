@@ -11,6 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          
           <Route path="/home" element={<HomeScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/signup" element={<SignUpScreen />} />
