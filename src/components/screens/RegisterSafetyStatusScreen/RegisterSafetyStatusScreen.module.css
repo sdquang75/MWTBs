@@ -1,0 +1,144 @@
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, #675CCD 0%, #342E67 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.header {
+  width: 393px;
+  height: 52.55px;
+  background: #F9FAFB;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  margin-bottom: 40px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.logoutWrapper {
+  position: absolute;
+  right: 16px;
+  top: 19px;
+  display: flex;
+  align-items: center;
+}
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 6px;
+}
+.logoutText {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+.card {
+  width: 373px;
+  min-height: 485px;
+  background: #F9FAFB;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 32px 28px 40px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4B5563;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.inputGroup {
+  width: 100%;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.label {
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  min-width: 80px;
+}
+.radioLabel {
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  margin-right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.inputWithIcon {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  padding: 0 12px;
+  width: 295px;
+  height: 32px;
+  position: relative;
+  margin-top: 6px;
+}
+.inputField {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  padding: 6px 0;
+}
+.inputUnit {
+  font-size: 14px;
+  color: #000;
+  margin-left: 6px;
+}
+.inputIcon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+.registerButton {
+  width: 320px;
+  height: 40px;
+  background: #7165E3;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0 auto;
+  margin-top: 40px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.registerButton:hover {
+  background: #5a4fd6;
+}

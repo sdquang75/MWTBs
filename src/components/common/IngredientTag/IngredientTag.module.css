@@ -1,0 +1,23 @@
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #E8E6FC;
+  color: #7165E3;
+  border-radius: 8px;
+  font-weight: 500;
+  animation: popIn 0.3s ease;
+}
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.removeBtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #7165E3;
+  cursor: pointer;
+  padding: 0 0 0 4px;
+}

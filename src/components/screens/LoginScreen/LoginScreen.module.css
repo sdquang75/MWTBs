@@ -1,0 +1,250 @@
+/* src/components/screens/LoginScreen/LoginScreen.module.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(180deg, #6B60D6 0%, #383270 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.loginBox {
+  width: 100%;
+  max-width: 375px;
+  background: #F9FAFB;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #FF0509; /* Màu đỏ cho thông báo lỗi/hướng dẫn */
+  margin-top: 8px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+  color: #6B7280; /* Màu xám cho icon */
+}
+
+.inputField {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  padding: 0 40px 0 42px; /* Khoảng trống cho icon trái và phải */
+  font-size: 14px;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #7165E3;
+  box-shadow: 0 0 0 2px rgba(113, 101, 227, 0.3);
+}
+
+.inputField:focus-visible {
+  outline: 2px solid #7165E3;
+  outline-offset: 1px;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+}
+
+.passwordToggleIcon {
+  width: 22px;
+  height: 22px;
+  color: #6B7280;
+}
+
+.passwordToggle:focus {
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(113, 101, 227, 0.3);
+}
+
+.passwordToggle:focus-visible {
+  outline: 2px solid #7165E3;
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+.forgotPassword {
+  align-self: flex-end;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  margin-top: -8px; /* Kéo lên gần hơn một chút */
+  margin-bottom: 24px;
+}
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.forgotPassword:focus {
+  outline: none;
+  text-decoration: underline;
+  box-shadow: 0 0 0 2px rgba(113, 101, 227, 0.3);
+  border-radius: 2px;
+}
+
+.forgotPassword:focus-visible {
+  outline: 2px solid #7165E3;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.loginButton {
+  height: 40px;
+  background: #7165E3;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.loginButton:hover {
+  background-color: #6B60D6;
+}
+
+.loginButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(113, 101, 227, 0.3);
+}
+
+.loginButton:focus-visible {
+  outline: 2px solid #7165E3;
+  outline-offset: 2px;
+}
+
+.loginButton:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.loginButtonLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.loadingSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid #FFFFFF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  color: #EF4444;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.inputError {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+
+.inputValid {
+  border-color: #10B981 !important;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3) !important;
+}
+
+.signupLink {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.signupLinkText {
+  font-size: 14px;
+  color: #7165E3;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.signupLinkText:hover {
+  color: #6B60D6;
+  text-decoration: underline;
+}
+
+.signupLinkText:focus {
+  outline: none;
+  text-decoration: underline;
+  box-shadow: 0 0 0 2px rgba(113, 101, 227, 0.3);
+  border-radius: 2px;
+}
+
+.signupLinkText:focus-visible {
+  outline: 2px solid #7165E3;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
