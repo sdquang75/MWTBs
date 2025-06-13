@@ -1,0 +1,259 @@
+/* src/components/screens/LoginScreen/LoginScreen.module.css */
+
+:root {
+  --primary-color: #7165E3; /* Màu tím chủ đạo từ CSS của cậu */
+  --primary-color-dark: #3E387D;
+  --background-color: #F9FAFB; /* Màu nền trắng sạch sẽ */
+  --text-color-primary: #111827;
+  --text-color-secondary: #6B7280;
+  --error-color: #D32F2F;
+  --border-color: #D1D5DB;
+  --border-radius: 12px;
+}
+
+/* BƯỚC 1: KHÔNG GIAN & LINH HỒN */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-color-dark) 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.loginBox {
+  width: 100%;
+  max-width: 400px; /* Giới hạn chiều rộng trên màn hình lớn */
+  background: var(--background-color);
+  border-radius: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px; /* Khoảng cách hào phóng giữa các yếu tố */
+}
+
+/* BƯỚC 2: BIỂN HIỆU - LOGO & LỜI CHÀO */
+.header {
+  text-align: center;
+  margin-bottom: 16px; /* Khoảng trắng hào phóng */
+}
+
+.logo {
+  width: 60px; /* Kích thước vừa phải */
+  height: auto;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-color-secondary);
+  margin: 0;
+  max-width: 300px;
+}
+
+/* BƯỚC 3: CỔNG VÀO - KHU VỰC NHẬP LIỆU */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color-secondary);
+  transition: color 0.2s ease-in-out;
+}
+
+.inputField {
+  width: 100%;
+  height: 52px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: #FFFFFF;
+  padding: 0 50px 0 48px; /* Khoảng trống cho icons */
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(113, 101, 227, 0.2);
+}
+
+.inputField.error {
+  border-color: var(--error-color);
+}
+
+.inputField.error + .inputIcon {
+  color: var(--error-color);
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-secondary);
+}
+
+.errorMessage {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: 6px;
+  text-align: left;
+}
+
+/* BƯỚC 4: LỐI THOÁT HIỂM & CHÌA KHÓA VÀNG */
+.forgotPassword {
+  align-self: flex-end;
+  font-size: 14px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: -12px; /* Kéo lên gần ô mật khẩu hơn */
+  margin-bottom: 8px;
+}
+
+.loginButton {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginButton:disabled {
+  background-color: #D1D5DB;
+  cursor: not-allowed;
+}
+
+.loginButton:not(:disabled):hover {
+  background-color: var(--primary-color-dark);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* BƯỚC 5: CÁNH CỬA PHỤ */
+.divider {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  line-height: 0.1em;
+  margin: 16px 0;
+}
+
+.divider span {
+  background: var(--background-color);
+  padding: 0 10px;
+  color: var(--text-color-secondary);
+  font-size: 14px;
+}
+
+.socialLoginContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%; /* Nút tròn hiện đại */
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.socialButton:hover {
+    border-color: var(--primary-color);
+}
+
+.socialIcon {
+    width: 24px;
+    height: 24px;
+}
+
+/* BƯỚC 6: DẪN LỐI NGƯỜI MỚI */
+.signupPrompt {
+    margin-top: 16px;
+    font-size: 15px;
+    color: var(--text-color-secondary);
+}
+
+.signupLink {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* BƯỚC 7: THÔNG BÁO LỖI */
+.snackbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #323232;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, bottom 0.3s ease, visibility 0.3s;
+}
+
+.snackbar.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 30px;
+}
