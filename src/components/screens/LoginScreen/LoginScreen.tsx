@@ -15,6 +15,8 @@ import EyeIcon from '../../../assets/icons/eye-icon.svg?react';
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [touched, setTouched] = useState<Record<keyof Errors, boolean>>({ email: false, password: false });
