@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './LoginScreen.module.css';
-
 import MailIcon from '../../../assets/icons/mail-icon.svg?react';
 import LockIcon from '../../../assets/icons/lock-icon.svg?react';
 import EyeIcon from '../../../assets/icons/eye-icon.svg?react';
+import EyeOffIcon from '../../../assets/icons/eye-off.svg?react';
 
 // TypeScript type for errors
  type Errors = {
    email?: string;
    password?: string;
+   backend?: string;
  };
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [touched, setTouched] = useState<Record<keyof Errors, boolean>>({ email: false, password: false });
+  const [touched, setTouched] = useState<Record<keyof Errors, boolean>>({ email: false, password: false, backend: false });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -50,8 +49,8 @@ const LoginScreen: React.FC = () => {
         newErrors.password = 'パスワードは6文字以上で入力してください';
       }
     }
-    setErrors(newErrors);
-  }, [email, password, touched]);
+    setErrors(prev => ({ ...prev, ...newErrors, backend: undefined }));
+  }, [email, password, touched.email, touched.password]);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -69,18 +68,34 @@ const LoginScreen: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTouched({ email: true, password: true });
-    if (Object.keys(errors).length) return;
+    setTouched({ email: true, password: true, backend: false });
+    if (errors.email || errors.password) return;
     setIsLoading(true);
+    setErrors({});
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setErrors({ backend: data.message || 'ログインに失敗しました。' });
+        setIsLoading(false);
+        return;
+      }
+      // Save token (localStorage or cookie)
+      localStorage.setItem('token', data.data.token);
       setEmail('');
       setPassword('');
-      setTouched({ email: false, password: false });
+      setTouched({ email: false, password: false, backend: false });
       setErrors({});
       navigate('/register-safety-status');
     } catch (error) {
-      alert('ログインに失敗しました。もう一度お試しください。');
+      setErrors({ backend: 'サーバーに接続できません。' });
     } finally {
       setIsLoading(false);
     }
@@ -139,25 +154,27 @@ const LoginScreen: React.FC = () => {
               <button
                 type="button"
                 className={styles.passwordToggle}
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? "非表示" : "表示"}
+                onClick={() => setShowPassword(s => !s)}
+                tabIndex={-1}
+                aria-label={showPassword ? '非表示' : '表示'}
                 disabled={isLoading}
               >
-                <EyeIcon className={styles.passwordToggleIcon} />
+                {showPassword ? <EyeOffIcon className={styles.passwordToggleIcon} /> : <EyeIcon className={styles.passwordToggleIcon} />}
               </button>
             </div>
             {errors.password && (
               <span className={styles.errorMessage} style={{ fontWeight: 600, color: '#EF4444', marginTop: 8, display: 'block', textAlign: 'center', transition: 'color 0.2s' }} role="alert">{errors.password}</span>
             )}
           </div>
-          <Link to="/forgot-password" className={styles.forgotPassword}>
-            パスワードを忘れた方
-          </Link>
+          {/* --- Backend Error --- */}
+          {errors.backend && (
+            <div className={styles.errorMessage} style={{ fontWeight: 600, color: '#EF4444', marginTop: 12, textAlign: 'center' }} role="alert">{errors.backend}</div>
+          )}
           <button
             type="submit"
             className={`${styles.loginButton} ${isLoading ? styles.loginButtonLoading : ''}`}
-            style={{ marginTop: 16, width: '100%', transition: 'background 0.2s' }}
-            disabled={isLoading || Object.keys(errors).length > 0 || !email || !password}
+            style={{ marginTop: 16, width: '100%' }}
+            disabled={isLoading || !!errors.email || !!errors.password}
           >
             {isLoading ? (
               <>
@@ -169,11 +186,6 @@ const LoginScreen: React.FC = () => {
             )}
           </button>
         </form>
-        <div className={styles.signupLink}>
-          <Link to="/signup" className={styles.signupLinkText}>
-            アカウントをお持ちでない方は登録
-          </Link>
-        </div>
       </div>
     </div>
   );

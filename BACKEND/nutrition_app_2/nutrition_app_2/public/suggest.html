@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>レシピ提案</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <style>
+    /* Figma埋め込み用iframeのサイズ調整 */
+    #figmaEmbed {
+      width: 100%;
+      height: 400px; /* 必要に応じて調整 */
+      border: none;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>材料からレシピを提案</h1>
+    <input type="text" id="ingredientInput" placeholder="例: たまねぎ, にんじん" />
+    <button id="searchBtn">検索</button>
+    <div id="results"></div>
+
+    <!-- Figma埋め込み -->
+    <h2>画面デザインプレビュー（Figma）</h2>
+    <iframe 
+      id="figmaEmbed" 
+      src="https://www.figma.com/embed?embed_host=share&url=【ここにFigmaの共有URLを入れる】" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <script src="js/suggest.js"></script>
+</body>
+</html>

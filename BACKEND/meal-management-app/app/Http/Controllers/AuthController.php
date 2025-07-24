@@ -69,8 +69,6 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-
-
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
@@ -88,20 +86,17 @@ class AuthController extends Controller
         }
 
         // 認証されたユーザーを取得
-        $user = Auth::user(); // ★この行で $user が null になっている可能性があります
-
-        // 既存のトークンを全て削除（オプション：複数ログインを許可しない場合など）
-        // $user->tokens()->delete();
+        $user = Auth::user();
 
         // 新しいAPIトークンの生成
-        $token = $user -> createToken('AuthToken', ['*'])->plainTextToken;
+        $token = $user->createToken('AuthToken', ['*'])->plainTextToken;
 
         return response()->json([
             'status' => 'success',
             'message' => 'ログインに成功しました。',
             'data' => [
                 'user' => $user,
-                'token' => $token, // 生成されたトークンをクライアントに返す
+                'token' => $token
             ]
         ], 200);
     }

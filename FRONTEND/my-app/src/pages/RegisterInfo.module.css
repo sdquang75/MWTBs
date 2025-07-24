@@ -1,0 +1,167 @@
+/* src/pages/RegisterInfo.module.css */
+.screen {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 20px 24px 0; /* Tăng padding trên */
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  height: 60px; /* Thêm chiều cao cố định */
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Giảm khoảng cách */
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  height: fit-content; /* Chiều cao tự động theo nội dung */
+}
+
+/* Placeholder cho icon logout */
+.logoutIconPlaceholder {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid black;
+  box-sizing: border-box;
+}
+
+/* CSS để chia chữ logout thành 2 dòng */
+.logoutButtonText {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 1; /* Giảm khoảng cách dòng */
+  font-weight: 500;
+  color: #000000;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px 32px;
+}
+
+.card {
+  width: 100%;
+  max-width: 340px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cardTitle {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.radioGroup {
+  display: flex;
+  gap: 24px;
+  margin-top: 4px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioInput + span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  position: relative;
+}
+
+.radioInput:checked + span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+}
+
+.registerButton {
+  margin-top: 16px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #000000;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.registerButton:hover {
+  background-color: #374151;
+}
+
+/* Placeholder chung cho các icon trong input */
+.iconPlaceholder {
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid #6b7280;
+  box-sizing: border-box;
+}

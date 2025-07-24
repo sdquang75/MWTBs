@@ -1,0 +1,109 @@
+/* src/pages/IngredientInput.module.css */
+.screen {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 32px;
+}
+
+.form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Giảm khoảng cách */
+}
+
+.addButton {
+  margin-top: 8px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #000000;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- Ingredient List Styles --- */
+.listContainer {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.listHeader, .listItem {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* Chia cột */
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.listHeader {
+  color: #000000;
+  font-weight: 500;
+  border-bottom: 1px solid #d1d5db;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+}
+
+.listItem {
+  color: #000000;
+  font-weight: 500;
+}
+
+.deleteButton {
+  background: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 8px;
+  cursor: pointer;
+  justify-self: end; /* Căn nút xóa sang phải */
+}
+
+/* --- Submit Button --- */
+.submitButton {
+  margin-top: auto; /* Đẩy nút xuống dưới cùng */
+  width: 100%;
+  max-width: 320px;
+  border-radius: 6px;
+  background-color: #000000;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Placeholder cho icon trong input */
+.inputIcon {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #6b7280;
+  box-sizing: border-box;
+}

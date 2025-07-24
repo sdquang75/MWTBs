@@ -1,0 +1,37 @@
+.header {
+  padding: 20px 24px 0; /* Tăng padding trên */
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  height: 60px; /* Thêm chiều cao cố định */
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Giảm khoảng cách */
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  height: fit-content; /* Chiều cao tự động theo nội dung */
+}
+
+/* Placeholder cho icon logout */
+.logoutIconPlaceholder {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid black;
+  box-sizing: border-box;
+}
+
+/* CSS để chia chữ logout thành 2 dòng */
+.logoutButtonText {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 1; /* Giảm khoảng cách dòng */
+  font-weight: 500;
+  color: #000000;
+}

@@ -1,0 +1,89 @@
+/* src/components/InputField.module.css */
+.container {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  padding: 10px 40px;
+  font-size: 14px;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #6b7280;
+  width: 20px;
+  height: 20px;
+}
+
+/* --- BẮT ĐẦU THAY ĐỔI --- */
+
+.rightIcon {
+  position: absolute;
+  top: 50%;
+  right: 5px; /* Giảm khoảng cách từ lề phải */
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style cho nút bấm chứa icon */
+.rightIcon button {
+  background: transparent;
+  border: none;
+  padding: 8px; /* Tạo vùng click xung quanh icon */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%; /* Bo tròn khu vực click */
+  color: #6b7280;
+  transition: background-color 0.2s;
+}
+
+/* Thêm hiệu ứng hover */
+.rightIcon button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Style cho SVG bên trong nút */
+.rightIcon button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- KẾT THÚC THAY ĐỔI --- */

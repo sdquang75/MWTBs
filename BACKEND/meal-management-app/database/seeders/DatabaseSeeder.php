@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Gọi NutritionSeeder để seed dữ liệu nutrition
+        $this->call(NutritionSeeder::class);
     }
 }
