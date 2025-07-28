@@ -8,12 +8,12 @@ import { RecipeList } from './pages/RecipeList';
 import { RegisterInfo } from './pages/RegisterInfo';
 
 function App() {
-    // return <Login />;
+    return <Login />;
   //  return <RegisterInfo />;
     //  return <Dashboard />;
 // return <IngredientInput />;
 //  return <NutritionInfo />;
-return<RecipeList/>
+// return<RecipeList/>
 }
 
 export default App

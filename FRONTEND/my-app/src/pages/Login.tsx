@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { InputField } from '../components/InputField';
 import { Icon } from '../components/Icon';
 import styles from './Login.module.css';
+import logo from '../assets/image 6.svg'
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -82,7 +83,8 @@ export const Login = () => {
         </main>
 
         <footer className={styles.footer}>
-          <Icon name="cutlery" className={styles.footerIcon} />
+      
+          <img src={logo} className={styles.footerIcon} />
         </footer>
       </div>
     </div>
