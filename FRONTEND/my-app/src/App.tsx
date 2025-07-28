@@ -10,8 +10,8 @@ function App() {
     // return <Login />;
   //  return <RegisterInfo />;
     //  return <Dashboard />;
-// return <IngredientInput />;
- return <NutritionInfo />;
+return <IngredientInput />;
+//  return <NutritionInfo />;
 }
 
 export default App
