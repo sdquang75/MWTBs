@@ -1,37 +1,46 @@
+/* src/components/Header.module.css */
 .header {
-  padding: 20px 24px 0; /* Tăng padding trên */
-  display: flex;
-  justify-content: flex-end;
-  flex-shrink: 0;
-  height: 60px; /* Thêm chiều cao cố định */
-}
-
-.logoutButton {
+  width: 100%;
+  height: 60px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
-  gap: 6px; /* Giảm khoảng cách */
+  justify-content: space-between; /* Đẩy 2 nút về 2 phía */
+  box-sizing: border-box;
+}
+
+.backButton, .logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   text-decoration: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  height: fit-content; /* Chiều cao tự động theo nội dung */
+  height: fit-content;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
 }
 
-/* Placeholder cho icon logout */
-.logoutIconPlaceholder {
+/* Placeholder chung cho các icon */
+.iconPlaceholder {
   width: 24px;
   height: 24px;
   border: 1.5px solid black;
   box-sizing: border-box;
+  display: flex; /* Dùng để căn giữa icon placeholder "←" */
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-/* CSS để chia chữ logout thành 2 dòng */
 .logoutButtonText {
   display: flex;
   flex-direction: column;
   font-size: 12px;
-  line-height: 1; /* Giảm khoảng cách dòng */
+  line-height: 1.1;
   font-weight: 500;
-  color: #000000;
 }
