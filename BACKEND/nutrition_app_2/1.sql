@@ -1,9 +1,0 @@
-source carry.sql;
-source carrysum.sql;
-source deta.sql;
-source don.sql;
-source donsum.sql;
-source energy.sql;
-source level.sql;
-source miso.sql;
-source misosum.sql;
