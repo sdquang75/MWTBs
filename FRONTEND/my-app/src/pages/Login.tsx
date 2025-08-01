@@ -5,21 +5,61 @@ import { Icon } from '../components/Icon';
 import styles from './Login.module.css';
 import logo from '../assets/image 6.svg'
 
+
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Lấy thông tin user bằng token
+  const fetchUserInfo = async (token: string) => {
+    try {
+      const res = await fetch('http://localhost:8000/api/user', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const user = await res.json();
+        // Có thể lưu user vào state hoặc localStorage nếu muốn
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+    } catch {}
+  };
+
+  // Đăng xuất: xóa token, chuyển hướng về login
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
       setLoginError('メールアドレスとパスワードを入力してください');
-    } else {
-      setLoginError('');
-      // [Suy luận]: Xử lý logic đăng nhập ở đây
-      console.log('Logging in with:', { email, password });
+      return;
     }
+    setLoginError('');
+    setIsLoading(true);
+    try {
+      const response = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (response.ok && data.access_token) {
+        localStorage.setItem('access_token', data.access_token);
+        await fetchUserInfo(data.access_token);
+        window.location.href = '/';
+      } else {
+        setLoginError(data.message || data.errors?.email?.[0] || 'ログインに失敗しました');
+      }
+    } catch (err) {
+      setLoginError('サーバーへの接続に失敗しました');
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -75,8 +115,8 @@ export const Login = () => {
                 </a>
               </div>
 
-              <button type="submit" className={styles.loginButton}>
-                ログイン
+              <button type="submit" className={styles.loginButton} disabled={isLoading}>
+                {isLoading ? 'ログイン中...' : 'ログイン'}
               </button>
             </form>
           </div>
