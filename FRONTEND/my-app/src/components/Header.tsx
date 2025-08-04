@@ -1,7 +1,7 @@
-// src/components/Header.tsx
+
 import styles from './Header.module.css';
 
-// Thêm props để component linh hoạt hơn
+
 interface HeaderProps {
   showBackButton?: boolean;
 }

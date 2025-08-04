@@ -11,10 +11,10 @@ import { RecipeList } from './pages/RecipeList';
 
 function App() {
   return (
-    <Login/>
+    <RecipeList/>
 
 
-    
+
 
     // <Routes>
     //   <Route path="/login" element={<Login />} />

@@ -15,7 +15,7 @@ type IconProps = {
   className?: string;
 };
 
-// Thêm các path SVG mới vào đây
+
 const iconPaths: Record<IconProps['name'], React.ReactNode> = {
   mail: (
     <path

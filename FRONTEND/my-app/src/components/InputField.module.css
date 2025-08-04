@@ -1,4 +1,4 @@
-/* src/components/InputField.module.css */
+
 .container {
   width: 100%;
 }
@@ -48,42 +48,41 @@
   height: 20px;
 }
 
-/* --- BẮT ĐẦU THAY ĐỔI --- */
+
 
 .rightIcon {
   position: absolute;
   top: 50%;
-  right: 5px; /* Giảm khoảng cách từ lề phải */
+  right: 5px; 
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Style cho nút bấm chứa icon */
+
 .rightIcon button {
   background: transparent;
   border: none;
-  padding: 8px; /* Tạo vùng click xung quanh icon */
+  padding: 8px; 
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 50%; /* Bo tròn khu vực click */
+  border-radius: 50%; 
   color: #6b7280;
   transition: background-color 0.2s;
 }
 
-/* Thêm hiệu ứng hover */
+
 .rightIcon button:hover {
   background-color: #f3f4f6;
 }
 
-/* Style cho SVG bên trong nút */
+
 .rightIcon button svg {
   width: 18px;
   height: 18px;
 }
 
-/* --- KẾT THÚC THAY ĐỔI --- */

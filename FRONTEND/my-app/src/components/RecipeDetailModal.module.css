@@ -1,5 +1,5 @@
-/* src/components/RecipeDetailModal.module.css */
-/* Lớp phủ toàn màn hình */
+
+
 .overlay {
     position: absolute;
     top: 0;
@@ -25,10 +25,10 @@
     }
 }
 
-/* src/components/RecipeDetailModal.module.css */
-/* ... (các class khác giữ nguyên) ... */
 
-/* Nội dung của modal */
+
+
+
 .modalContainer  {
     background: white;
     border-radius: 12px;
@@ -43,7 +43,7 @@
     animation: scaleUp 0.3s ease-out;
     box-sizing: border-box;
  display: flex;
-    /* Ẩn scrollbar */
+    
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -52,7 +52,7 @@
     display: none;
 }
 
-/* ... (các class còn lại giữ nguyên) ... */
+
 
 @keyframes scaleUp {
     from {
@@ -81,12 +81,12 @@
     align-items: center;
     justify-content: center;
 }
-/* Class mới cho nội dung cuộn */
+
 .scrollingContent {
   overflow-y: auto;
-  /* padding: 24px; */
   
-  /* Ẩn scrollbar */
+  
+  
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -124,7 +124,7 @@
     padding-bottom: 8px;
 }
 
-/* Danh sách nguyên liệu */
+
 .ingredientList {
     list-style: none;
     padding: 0;
@@ -147,12 +147,12 @@
 
 .ingredientHave .ingredientIcon {
     color: #10b981;
-    /* Màu xanh lá */
+    
 }
 
 .ingredientMissing .ingredientIcon {
     color: #ef4444;
-    /* Màu đỏ */
+    
 }
 
 .ingredientHave {
