@@ -5,6 +5,7 @@ import { Icon } from '../components/Icon';
 import styles from './Login.module.css';
 import logo from '../assets/image 6.svg'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +13,7 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  const { login } = useAuth();
 
   const fetchUserInfo = async (token: string) => {
     try {
@@ -42,21 +43,32 @@ export const Login = () => {
     }
     setLoginError('');
     setIsLoading(true);
-    navigate('/');
+    
+  
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await response.json();
-      if (response.ok && data.access_token) {
-        localStorage.setItem('access_token', data.access_token);
-        await fetchUserInfo(data.access_token);
-        window.location.href = '/';
-      } else {
-        setLoginError(data.message || data.errors?.email?.[0] || 'ログインに失敗しました');
-      }
+    //   const response = await fetch('http://localhost:8000/api/login', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ email, password })
+    //   });
+    //   const data = await response.json();
+    //   if (response.ok && data.access_token) {
+    //     localStorage.setItem('access_token', data.access_token);
+    //     await fetchUserInfo(data.access_token);
+    //     window.location.href = '/';
+    //   } else {
+    //     setLoginError(data.message || data.errors?.email?.[0] || 'ログインに失敗しました');
+    //   }
+
+
+       await new Promise(resolve => setTimeout(resolve, 1000));
+      const fakeToken = 'your_jwt_token_here'; // Token giả lập
+
+      // Gọi hàm login từ context
+      login(fakeToken);
+      
+      // Điều hướng sau khi đăng nhập thành công
+      navigate('/'); 
     } catch (err) {
       setLoginError('サーバーへの接続に失敗しました');
     }

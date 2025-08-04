@@ -128,7 +128,7 @@ export const RegisterInfo = () => {
                 onChange={(e) => handleDecimalChange(e, setWeight)}
               />
 
-              <button type="submit" className={styles.registerButton}>
+              <button type="submit" className={styles.registerButton} onClick={() => navigate('/')}>
                 登録する
               </button>
             </form>

@@ -1,4 +1,5 @@
 
+import { useAuth } from '../context/AuthContext';
 import styles from './Header.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,6 +9,8 @@ interface HeaderProps {
 
 export const Header = ({ showBackButton = false }: HeaderProps) => {
   const navigate = useNavigate();
+
+   const { logout } = useAuth(); 
   return (
     <header className={styles.header}>
 
@@ -25,13 +28,13 @@ export const Header = ({ showBackButton = false }: HeaderProps) => {
           <span>自分レシピ</span>
         </button>
       {/* Nút "Đăng xuất" luôn ở bên phải */}
-      <a href="#" className={styles.logoutButton}>
+      <button className={styles.logoutButton} onClick={logout}>
 
         <div className={styles.logoutButtonText}>
           <span>ログ</span>
           <span>アウト</span>
         </div>
-      </a>
+      </button>
     </header>
   );
 };
