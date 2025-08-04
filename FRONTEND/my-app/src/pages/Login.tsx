@@ -1,4 +1,4 @@
-// src/pages/Login.tsx
+
 import { useState } from 'react';
 import { InputField } from '../components/InputField';
 import { Icon } from '../components/Icon';
@@ -13,7 +13,7 @@ export const Login = () => {
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Lấy thông tin user bằng token
+  
   const fetchUserInfo = async (token: string) => {
     try {
       const res = await fetch('http://localhost:8000/api/user', {
@@ -21,13 +21,13 @@ export const Login = () => {
       });
       if (res.ok) {
         const user = await res.json();
-        // Có thể lưu user vào state hoặc localStorage nếu muốn
+        
         localStorage.setItem('user', JSON.stringify(user));
       }
     } catch {}
   };
 
-  // Đăng xuất: xóa token, chuyển hướng về login
+  
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');

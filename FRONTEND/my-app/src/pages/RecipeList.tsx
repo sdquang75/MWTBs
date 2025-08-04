@@ -1,4 +1,4 @@
-// src/pages/RecipeList.tsx
+
 import { useMemo, useState } from 'react';
 import { Header } from '../components/Header';
 import { RecipeCard,  } from '../components/RecipeCard';
@@ -7,21 +7,21 @@ import { RecipeDetailModal } from '../components/RecipeDetailModal';
 import styles from './RecipeList.module.css';
 import loginStyles from './Login.module.css';
 
-// Interface mở rộng
+
 interface DetailedRecipe extends Recipe {
   description: string;
   steps: string[];
   requiredIngredients: { name: string; quantity: string }[];
 }
 
-// --- BẮT ĐẦU PHẦN SỬA LỖI DATA ---
-// Dữ liệu giả lập cho toàn bộ công thức
+
+
 const ALL_RECIPES: DetailedRecipe[] = [
   { 
     id: 1, 
     name: 'ジャガイモと玉ねぎと にんじんの煮物', 
     imageUrl: '', 
-    // Sửa tên nguyên liệu thành tiếng Nhật
+    
     ingredients: ['じゃがいも', 'たまねぎ', 'にんじん'], 
     description: '日本の伝統的な、温かく栄養満点の煮込み料理。',
     requiredIngredients: [
@@ -36,7 +36,7 @@ const ALL_RECIPES: DetailedRecipe[] = [
     id: 2, 
     name: 'カレーライス', 
     imageUrl: '', 
-    // Sửa tên nguyên liệu thành tiếng Nhật
+    
     ingredients: ['じゃがいも', 'たまねぎ', 'にんじん', '牛肉'], 
     description: '日本のカレーは、あらゆる年齢層に愛されている、深い味わいです。',
     requiredIngredients: [
@@ -51,7 +51,7 @@ const ALL_RECIPES: DetailedRecipe[] = [
     id: 3, 
     name: '肉じゃが', 
     imageUrl: '', 
-    // Sửa tên nguyên liệu thành tiếng Nhật
+    
     ingredients: ['牛肉', 'じゃがいも', 'たまねぎ'], 
     description: '甘辛い牛肉とジャガイモとタマネギの煮込み',
     requiredIngredients: [
@@ -64,7 +64,7 @@ const ALL_RECIPES: DetailedRecipe[] = [
   },
   { 
     id: 4, 
-    name: 'チキンサラダ', // Món này sẽ không được gợi ý
+    name: 'チキンサラダ', 
     imageUrl: '', 
     ingredients: ['鶏肉', 'レタス'], 
     description: '新鮮な鶏肉のサラダは軽食に最適です。',
@@ -76,9 +76,9 @@ const ALL_RECIPES: DetailedRecipe[] = [
   },
 ];
 
-// Nguyên liệu người dùng đã nhập (giả lập)
-const USER_INGREDIENTS = ['たまねぎ', 'じゃがいも', '醤油', '牛肉']; // Thêm '牛肉' để có 3 món được gợi ý
-// --- KẾT THÚC PHẦN SỬA LỖI DATA ---
+
+const USER_INGREDIENTS = ['たまねぎ', 'じゃがいも', '醤油', '牛肉']; 
+
 
 
 export const RecipeList = () => {
@@ -98,7 +98,7 @@ export const RecipeList = () => {
           <h2 className={styles.title}>おすすめレシピ</h2>
           <div className={styles.recipeGrid}>
             {recommendedRecipes.map(recipe => (
-              // Bọc RecipeCard trong div để gán sự kiện onClick
+              
               <div key={recipe.id} onClick={() => setSelectedRecipe(recipe)}>
                 <RecipeCard recipe={recipe} />
               </div>

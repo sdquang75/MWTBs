@@ -1,10 +1,10 @@
-// src/pages/NutritionInfo.tsx
+
 import { useState, useMemo } from 'react';
 import { Header } from '../components/Header';
 import styles from './NutritionInfo.module.css';
 import loginStyles from './Login.module.css';
 
-// Định nghĩa cấu trúc dữ liệu cho một nguyên liệu
+
 interface NutrientInfo {
   [key: string]: { value: number; unit: string };
 }
@@ -17,11 +17,11 @@ interface IngredientData {
   nutrients: NutrientInfo;
 }
 
-// --- Dữ liệu giả lập (sẽ được truyền từ trang trước trong ứng dụng thật) ---
+
 const ingredientsData: IngredientData[] = [
   {
     id: 1,
-    name: 'たまねぎ', // Onion
+    name: 'たまねぎ', 
     quantity: 100,
     unit: 'g',
     nutrients: {
@@ -35,7 +35,7 @@ const ingredientsData: IngredientData[] = [
   },
   {
     id: 2,
-    name: '鶏むね肉', // Chicken Breast
+    name: '鶏むね肉', 
     quantity: 150,
     unit: 'g',
     nutrients: {
@@ -46,15 +46,15 @@ const ingredientsData: IngredientData[] = [
     },
   },
 ];
-// --------------------------------------------------------------------------
+
 
 export const NutritionInfo = () => {
-  // State để lưu id của nguyên liệu đang được chọn
+  
   const [selectedIngredientId, setSelectedIngredientId] = useState<number>(
     ingredientsData[0]?.id || 0
   );
 
-  // Tìm thông tin của nguyên liệu đang được chọn
+  
   const selectedIngredient = useMemo(() => {
     return ingredientsData.find(item => item.id === selectedIngredientId);
   }, [selectedIngredientId]);

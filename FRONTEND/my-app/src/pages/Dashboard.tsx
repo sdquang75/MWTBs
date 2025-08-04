@@ -1,4 +1,4 @@
-// src/pages/Dashboard.tsx
+
 import { Header } from '../components/Header';
 import { DashboardButton } from '../components/DashboardButton';
 import styles from './Dashboard.module.css';

@@ -1,4 +1,4 @@
-/* src/pages/RegisterInfo.module.css */
+
 .screen {
   width: 100%;
   height: 100%;
@@ -11,26 +11,26 @@
 }
 
 .header {
-  padding: 20px 24px 0; /* Tăng padding trên */
+  padding: 20px 24px 0; 
   display: flex;
   justify-content: flex-end;
   flex-shrink: 0;
-  height: 60px; /* Thêm chiều cao cố định */
+  height: 60px; 
 }
 
 .logoutButton {
   display: flex;
   align-items: center;
-  gap: 6px; /* Giảm khoảng cách */
+  gap: 6px; 
   text-decoration: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  height: fit-content; /* Chiều cao tự động theo nội dung */
+  height: fit-content; 
 }
 
-/* Placeholder cho icon logout */
+
 .logoutIconPlaceholder {
   width: 24px;
   height: 24px;
@@ -38,12 +38,12 @@
   box-sizing: border-box;
 }
 
-/* CSS để chia chữ logout thành 2 dòng */
+
 .logoutButtonText {
   display: flex;
   flex-direction: column;
   font-size: 12px;
-  line-height: 1; /* Giảm khoảng cách dòng */
+  line-height: 1; 
   font-weight: 500;
   color: #000000;
 }
@@ -158,7 +158,7 @@
   background-color: #374151;
 }
 
-/* Placeholder chung cho các icon trong input */
+
 .iconPlaceholder {
   width: 22px;
   height: 22px;

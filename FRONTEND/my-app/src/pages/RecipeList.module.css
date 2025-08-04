@@ -1,8 +1,8 @@
-/* src/pages/RecipeList.module.css */
+
 .screen {
   width: 100%;
   height: 100%;
-  background-color: #F9F9FF; /* Màu nền theo design */
+  background-color: #F9F9FF; 
   border-radius: 30px;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
   flex-grow: 1;
   padding: 24px;
   overflow-y: auto;
-  /* Ẩn scrollbar */
+  
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -32,6 +32,6 @@
 
 .recipeGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Tạo layout 2 cột */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 20px;
 }

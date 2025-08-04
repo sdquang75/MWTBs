@@ -1,4 +1,4 @@
-// src/components/RecipeDetailModal.tsx
+
 import styles from './RecipeDetailModal.module.css';
 import type { Recipe } from './RecipeCard';
 

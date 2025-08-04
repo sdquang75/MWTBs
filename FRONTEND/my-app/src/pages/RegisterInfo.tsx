@@ -1,4 +1,4 @@
-// src/pages/RegisterInfo.tsx
+
 import { useState } from 'react';
 import { InputField } from '../components/InputField';
 import styles from './RegisterInfo.module.css';
@@ -15,9 +15,9 @@ export const RegisterInfo = () => {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
 
-  // Hàm xử lý định dạng ngày sinh yyyy/mm/dd
+  
   const handleDobChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^\d]/g, ''); // Chỉ giữ lại số
+    const value = e.target.value.replace(/[^\d]/g, ''); 
     let formattedValue = value;
     if (value.length > 4) {
       formattedValue = `${value.slice(0, 4)}/${value.slice(4)}`;
@@ -25,16 +25,16 @@ export const RegisterInfo = () => {
     if (value.length > 6) {
       formattedValue = `${value.slice(0, 4)}/${value.slice(4, 6)}/${value.slice(6, 8)}`;
     }
-    setDob(formattedValue.slice(0, 10)); // Giới hạn 10 ký tự
+    setDob(formattedValue.slice(0, 10)); 
   };
 
-  // Hàm xử lý chỉ cho phép nhập số thập phân
+  
   const handleDecimalChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     setter: React.Dispatch<React.SetStateAction<string>>
   ) => {
     const value = e.target.value;
-    // Chỉ cho phép số và một dấu chấm
+    
     if (/^\d*\.?\d*$/.test(value)) {
       setter(value);
     }
@@ -46,7 +46,7 @@ export const RegisterInfo = () => {
     console.log('Thông tin đăng ký:', userInfo);
   };
 
-  // Placeholder cho icon
+  
   const IconPlaceholder = () => <div className={styles.iconPlaceholder}></div>;
 
   return (
@@ -102,7 +102,7 @@ export const RegisterInfo = () => {
               <InputField
                 id="height"
                 label="身長入力"
-                type="text" // Dùng text để kiểm soát định dạng thập phân tốt hơn
+                type="text" 
                 placeholder="0.0 cm"
                 icon={<></>}
                 rightIcon={<img src={hai} alt="Calendar Icon" className={styles.inputIcon} />}

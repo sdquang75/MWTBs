@@ -1,11 +1,11 @@
-// src/components/RecipeCard.tsx
+
 import styles from './RecipeCard.module.css';
 
-// Định nghĩa kiểu dữ liệu cho một công thức
+
 export interface Recipe {
   id: number;
   name: string;
-  imageUrl: string; // Tạm thời là placeholder
+  imageUrl: string; 
   ingredients: string[];
 }
 

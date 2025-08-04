@@ -1,4 +1,4 @@
-/* src/pages/Login.module.css */
+
 .phoneFrame {
   position: relative;
   width: 393px;
@@ -15,7 +15,7 @@
   height: 100%;
   background-color: #ffffff;
   border-radius: 30px;
-  /* overflow-y: auto; Cho phép cuộn nếu nội dung dài */
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@
 .main {
   margin-top: 40px;
   width: 100%;
-  max-width: 320px; /* Giới hạn chiều rộng của card */
+  max-width: 320px; 
 }
 
 .card {
@@ -68,7 +68,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px; /* Khoảng cách giữa các phần tử form */
+  gap: 24px; 
 }
 
 .forgotPasswordLink {

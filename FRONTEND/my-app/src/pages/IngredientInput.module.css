@@ -1,4 +1,4 @@
-/* src/pages/IngredientInput.module.css */
+
 .screen {
   width: 100%;
   height: 100%;
@@ -9,25 +9,25 @@
   box-sizing: border-box;
 }
 
-/* --- BẮT ĐẦU THAY ĐỔI --- */
+
 .main {
-  flex-grow: 1; /* Cho phép main chiếm hết không gian dọc còn lại */
+  flex-grow: 1; 
   padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  overflow: hidden; /* Ngăn nội dung trong main tràn ra ngoài */
+  overflow: hidden; 
 }
-/* --- KẾT THÚC THAY ĐỔI --- */
+
 
 
 .title {
   font-size: 20px;
   font-weight: 600;
   color: #000000;
-  margin-bottom: 8px; /* Giảm margin bottom một chút */
-  flex-shrink: 0; /* Ngăn title bị co lại */
+  margin-bottom: 8px; 
+  flex-shrink: 0; 
 }
 
 .form {
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  flex-shrink: 0; /* Ngăn form bị co lại */
+  flex-shrink: 0; 
 }
 
 .addButton {
@@ -53,24 +53,24 @@
 }
 
 
-/* --- BẮT ĐẦU THAY ĐỔI --- */
+
 .listContainer {
   width: 100%;
   max-width: 320px;
-  flex-grow: 1; /* Cho phép list chiếm hết không gian trống */
-  overflow-y: auto; /* Thêm thanh cuộn khi nội dung dài */
+  flex-grow: 1; 
+  overflow-y: auto; 
   border-top: 1px solid #d1d5db;
   border-bottom: 1px solid #d1d5db;
   padding-top: 8px;
 
-  /* Ẩn thanh cuộn */
+  
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .listContainer::-webkit-scrollbar {
   display: none;
 }
-/* --- KẾT THÚC THAY ĐỔI --- */
+
 
 
 .listHeader, .listItem {
@@ -105,7 +105,7 @@
 }
 
 
-/* --- BẮT ĐẦU THAY ĐỔI --- */
+
 .submitButton {
   width: 100%;
   max-width: 320px;
@@ -117,12 +117,12 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
-  flex-shrink: 0; /* Ngăn nút bị co lại */
+  flex-shrink: 0; 
 }
-/* --- KẾT THÚC THAY ĐỔI --- */
 
 
-/* Placeholder cho icon trong input */
+
+
 .inputIcon {
   width: 20px;
   height: 20px;

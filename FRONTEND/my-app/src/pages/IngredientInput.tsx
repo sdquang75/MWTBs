@@ -1,4 +1,4 @@
-// src/pages/IngredientInput.tsx
+
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { InputField } from '../components/InputField';
@@ -21,7 +21,7 @@ export const IngredientInput = () => {
     { id: 1, name: 'たまねぎ', unit: 'g', quantity: '150' },
   ]);
 
-  // Hàm xử lý chỉ cho phép nhập số thập phân
+  
   const handleDecimalChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     setter: React.Dispatch<React.SetStateAction<string>>
@@ -45,7 +45,7 @@ export const IngredientInput = () => {
     };
     setIngredientList([...ingredientList, newIngredient]);
     setIngredientName('');
-    setQuantity(''); // Reset ô số lượng
+    setQuantity(''); 
   };
 
   const handleDeleteIngredient = (id: number) => {
@@ -75,9 +75,9 @@ export const IngredientInput = () => {
             <InputField
               id="quantity"
               label="分量"
-              type="text" // Dùng text để kiểm soát định dạng thập phân
+              type="text" 
               placeholder=""
-              icon={<></>} // Không có icon trái
+              icon={<></>} 
               value={quantity}
               onChange={(e) => handleDecimalChange(e, setQuantity)}
             />

@@ -1,8 +1,8 @@
-// src/components/InputField.tsx
-import React, { ReactNode } from 'react';
+
+import React, { type ReactNode } from 'react';
 import styles from './InputField.module.css';
 
-// Kế thừa các thuộc tính gốc của input
+
 type InputFieldProps = React.ComponentProps<'input'> & {
   id: string;
   label: string;
