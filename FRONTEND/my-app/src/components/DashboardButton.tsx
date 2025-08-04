@@ -1,4 +1,4 @@
-// src/components/DashboardButton.tsx
+
 import styles from './DashboardButton.module.css';
 
 type DashboardButtonProps = {

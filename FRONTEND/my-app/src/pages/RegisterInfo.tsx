@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { InputField } from '../components/InputField';
 import styles from './RegisterInfo.module.css';
 import loginStyles from './Login.module.css';
@@ -7,17 +7,25 @@ import mot from '../assets/solar_calendar-linear.svg';
 import hai from '../assets/mdi_human-male-height.svg';
 import ba from '../assets/wn.svg';
 import { Header } from '../components/Header';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const RegisterInfo = () => {
   const [gender, setGender] = useState('female');
   const [dob, setDob] = useState('');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const receivedIngredients = location.state?.ingredients || [];
+  const [selectedIngredientId, setSelectedIngredientId] = useState<number>(
+    receivedIngredients[0]?.id || 0
+  );
+  const selectedIngredient = useMemo(() => {
+    return receivedIngredients.find((item: any) => item.id === selectedIngredientId);
+  }, [selectedIngredientId, receivedIngredients]);
 
-  
   const handleDobChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/[^\d]/g, ''); 
+    const value = e.target.value.replace(/[^\d]/g, '');
     let formattedValue = value;
     if (value.length > 4) {
       formattedValue = `${value.slice(0, 4)}/${value.slice(4)}`;
@@ -25,16 +33,16 @@ export const RegisterInfo = () => {
     if (value.length > 6) {
       formattedValue = `${value.slice(0, 4)}/${value.slice(4, 6)}/${value.slice(6, 8)}`;
     }
-    setDob(formattedValue.slice(0, 10)); 
+    setDob(formattedValue.slice(0, 10));
   };
 
-  
+
   const handleDecimalChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     setter: React.Dispatch<React.SetStateAction<string>>
   ) => {
     const value = e.target.value;
-    
+
     if (/^\d*\.?\d*$/.test(value)) {
       setter(value);
     }
@@ -46,13 +54,13 @@ export const RegisterInfo = () => {
     console.log('Thông tin đăng ký:', userInfo);
   };
 
-  
+
   const IconPlaceholder = () => <div className={styles.iconPlaceholder}></div>;
 
   return (
     <div className={loginStyles.phoneFrame}>
       <div className={styles.screen}>
-     <Header />
+        <Header />
 
         <main className={styles.main}>
           <div className={styles.card}>
@@ -102,7 +110,7 @@ export const RegisterInfo = () => {
               <InputField
                 id="height"
                 label="身長入力"
-                type="text" 
+                type="text"
                 placeholder="0.0 cm"
                 icon={<></>}
                 rightIcon={<img src={hai} alt="Calendar Icon" className={styles.inputIcon} />}
@@ -119,7 +127,7 @@ export const RegisterInfo = () => {
                 value={weight}
                 onChange={(e) => handleDecimalChange(e, setWeight)}
               />
-              
+
               <button type="submit" className={styles.registerButton}>
                 登録する
               </button>

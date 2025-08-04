@@ -11,22 +11,21 @@ import { RecipeList } from './pages/RecipeList';
 
 function App() {
   return (
-    <RecipeList/>
+  
 
 
 
-
-    // <Routes>
-    //   <Route path="/login" element={<Login />} />
-    //   <Route path="/register-info" element={<RegisterInfo />} />
-    //   <Route path="/" element={<Dashboard />} />
-    //   <Route path="/ingredient-input" element={<IngredientInput />} />
-    //   <Route path="/nutrition-info" element={<NutritionInfo />} />
-    //   <Route path="/recipe-list" element={<RecipeList />} />
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register-info" element={<RegisterInfo />} />
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/ingredient-input" element={<IngredientInput />} />
+      <Route path="/nutrition-info" element={<NutritionInfo />} />
+      <Route path="/recipe-list" element={<RecipeList />} />
       
 
-    //   <Route index element={<Login />} /> 
-    // </Routes>
+      <Route index element={<Dashboard />} /> 
+    </Routes>
     
   );
 }

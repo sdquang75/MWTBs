@@ -4,7 +4,7 @@ import { InputField } from '../components/InputField';
 import { Icon } from '../components/Icon';
 import styles from './Login.module.css';
 import logo from '../assets/image 6.svg'
-
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,7 +13,7 @@ export const Login = () => {
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  
+
   const fetchUserInfo = async (token: string) => {
     try {
       const res = await fetch('http://localhost:8000/api/user', {
@@ -21,19 +21,19 @@ export const Login = () => {
       });
       if (res.ok) {
         const user = await res.json();
-        
+
         localStorage.setItem('user', JSON.stringify(user));
       }
-    } catch {}
+    } catch { }
   };
 
-  
+
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');
     window.location.href = '/login';
   };
-
+  const navigate = useNavigate();
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
@@ -42,6 +42,7 @@ export const Login = () => {
     }
     setLoginError('');
     setIsLoading(true);
+    navigate('/');
     try {
       const response = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
@@ -123,7 +124,7 @@ export const Login = () => {
         </main>
 
         <footer className={styles.footer}>
-      
+
           <img src={logo} className={styles.footerIcon} />
         </footer>
       </div>

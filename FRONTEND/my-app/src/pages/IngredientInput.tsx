@@ -6,6 +6,7 @@ import { SelectField } from '../components/SelectField';
 import styles from './IngredientInput.module.css';
 import loginStyles from './Login.module.css';
 import sau from '../assets/find.svg';
+import { useNavigate } from 'react-router-dom';
 interface Ingredient {
   id: number;
   name: string;
@@ -20,7 +21,7 @@ export const IngredientInput = () => {
   const [ingredientList, setIngredientList] = useState<Ingredient[]>([
     { id: 1, name: 'たまねぎ', unit: 'g', quantity: '150' },
   ]);
-
+const navigate = useNavigate(); 
   
   const handleDecimalChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -47,7 +48,10 @@ export const IngredientInput = () => {
     setIngredientName('');
     setQuantity(''); 
   };
-
+const handleSubmitToNextPage = () => {
+    // 3. Điều hướng đến trang nutrition-info và truyền `ingredientList` đi
+    navigate('/nutrition-info', { state: { ingredients: ingredientList } });
+};
   const handleDeleteIngredient = (id: number) => {
     setIngredientList(ingredientList.filter(item => item.id !== id));
   };
@@ -57,7 +61,7 @@ export const IngredientInput = () => {
   return (
     <div className={loginStyles.phoneFrame}>
       <div className={styles.screen}>
-        <Header />
+        <Header showBackButton={true} />
         <main className={styles.main}>
           <h2 className={styles.title}>食材入力</h2>
 
@@ -109,7 +113,7 @@ export const IngredientInput = () => {
             ))}
           </div>
           
-          <button type="button" className={styles.submitButton}>
+          <button type="button" className={styles.submitButton} onClick={handleSubmitToNextPage}>
             登録する
           </button>
         </main>

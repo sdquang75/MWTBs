@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import { Header } from '../components/Header';
 import styles from './NutritionInfo.module.css';
 import loginStyles from './Login.module.css';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NutrientInfo {
   [key: string]: { value: number; unit: string };
@@ -21,7 +21,7 @@ interface IngredientData {
 const ingredientsData: IngredientData[] = [
   {
     id: 1,
-    name: 'たまねぎ', 
+    name: 'たまねぎ',
     quantity: 100,
     unit: 'g',
     nutrients: {
@@ -35,7 +35,7 @@ const ingredientsData: IngredientData[] = [
   },
   {
     id: 2,
-    name: '鶏むね肉', 
+    name: '鶏むね肉',
     quantity: 150,
     unit: 'g',
     nutrients: {
@@ -49,12 +49,15 @@ const ingredientsData: IngredientData[] = [
 
 
 export const NutritionInfo = () => {
-  
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const receivedIngredients = location.state?.ingredients || [];
   const [selectedIngredientId, setSelectedIngredientId] = useState<number>(
     ingredientsData[0]?.id || 0
   );
 
-  
+
   const selectedIngredient = useMemo(() => {
     return ingredientsData.find(item => item.id === selectedIngredientId);
   }, [selectedIngredientId]);
@@ -62,7 +65,7 @@ export const NutritionInfo = () => {
   return (
     <div className={loginStyles.phoneFrame}>
       <div className={styles.screen}>
-        <Header />
+        <Header showBackButton={true} />
         <main className={styles.main}>
           <h2 className={styles.title}>栄養成分表示</h2>
 
@@ -111,10 +114,17 @@ export const NutritionInfo = () => {
             )}
 
           </div>
-          
+
           <div className={styles.actions}>
-            <button className={styles.actionButton}>再入力</button>
-            <button className={styles.actionButton}>登録</button>
+            <button className={styles.actionButton} onClick={() => navigate(-1)}>
+              再入力
+            </button>
+            <button
+              className={styles.actionButton}
+              onClick={() => navigate('/recipe-list', { state: { ingredients: receivedIngredients } })}
+            >
+              登録
+            </button>
           </div>
         </main>
       </div>

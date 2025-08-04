@@ -8,7 +8,20 @@
   justify-content: space-between; /* Đẩy 2 nút về 2 phía */
   box-sizing: border-box;
 }
-
+.homeButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  height: fit-content;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+}
 .backButton, .logoutButton {
   display: flex;
   align-items: center;
